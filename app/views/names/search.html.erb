@@ -1,8 +1,9 @@
-<div class="row" style="text-align:center">
-	<h2>正在苦惱暑假要去哪玩嗎？</h2>
-	<p style="margin-bottom: 3em">找一個跟自己姓名的筆畫數一樣的地方，一個人去冒險吧！</p>
+<div class="row">
+	
 	
 	<div class="col-md-6 col-md-offset-3" style="text-align:center">
+	<h2>正在苦惱暑假要去哪玩嗎？</h2>
+	<p style="margin-bottom: 3em">找一個跟自己姓名的筆畫數一樣的地方，一個人去冒險吧！</p>
 	 	<% @characters.each do |character| %>
 			<%= character['chinese'] %>：<%= character['stroke'] %>劃<br>
 		<% end %>
@@ -31,19 +32,8 @@
 		</table>
 		<br>
 		<br>
-		<br>
-		<br>
+
 		<%= link_to '返回', root_path %>
 	</div>
-</div>
-
-
-
-
-
-
-
-<br/>
-<br/>
-<br/>	
+</div>	
 
