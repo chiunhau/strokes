@@ -8,21 +8,26 @@ class NamesController < ApplicationController
   end
 
   def search
-  	name = params[:name]
+  	str = params[:str]
+  	name = stringFilter(str)
   	stroke_array = cnsToStroke(big5ToCns(name))
-  	@characters = Hash.new
-
+  	
+  	@characters = Array.new
+  	num = stroke_array.length
+  	for i in 0...num
+  		character = { 'chinese' => name[i], 'stroke' => stroke_array[i]}
+  		@characters.push(character)
+  	end
   end
 
   def stringFilter(str)
-  	str.gsub(/[^\u4E00-\u9fa5]/, '')
-  	return str
+  	name = str.gsub(/[^\u4E00-\u9fa5]/, '')
+  	return name
   end
-  def big5ToCns(str)
 
-		big_5_to_cns = JSON.parse(File.read("big_5_to_cns.json"))
+  def big5ToCns(name)
 
-  	name = stringFilter(str)
+		big_5_to_cns = JSON.parse(File.read("#{Rails.root}/public/big_5_to_cns.json"))
   	big5_pre = Iconv.conv("Big5", "utf-8", name).bytes.to_a
   	big5_length = big5.length / 2
   	big5 = Array.new
@@ -42,7 +47,7 @@ class NamesController < ApplicationController
   end
 
   def cnsToStroke(cns_array)
-  	cns_to_stroke = JSON.parse(File.read("cns_to_stroke.json"))
+  	cns_to_stroke = JSON.parse(File.read("#{Rails.root}/public/cns_to_stroke.json"))
   	stroke = Array.new
   	cns_array.each do |cns|
   		stroke.push(cns_to_stroke[cns])
