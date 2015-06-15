@@ -20,6 +20,7 @@ class NamesController < ApplicationController
   		@characters.push(character)
   		@stroke_sum += stroke_array[i]
   	end
+  	@places = strokeToPlaces(@stroke_sum)
   end
 
   def stringFilter(str)
@@ -57,4 +58,35 @@ class NamesController < ApplicationController
 
   	return stroke
   end
+
+  def strokeToPlaces(stroke_sum)
+		stroke_to_places = JSON.parse(File.read("#{Rails.root}/public/stroke_to_places.json"))
+  	
+  	return stroke_to_places[stroke_sum.to_s]
+  end
+
+  # def updatePlaces
+  # 	places = Hash.new
+
+  # 	CSV.foreach("#{Rails.root}/public/stroke_to_places.csv") do |row|
+  # 		place_strokes_sum = 0
+
+  # 		place_stroke_array = cnsToStroke(big5ToCns(row[0]))
+  # 		place_stroke_array.each do |i|
+  # 			place_strokes_sum += i
+  # 		end
+
+  # 		place_hash = { "place" => row[0], "county" => row[1], "town" => row[2]}
+
+  # 		if !places[place_strokes_sum].kind_of?(Array)
+  # 			places[place_strokes_sum] = Array.new
+  # 		end
+  # 		places[place_strokes_sum].push(place_hash)
+  # 	end
+
+
+  # 	File.open("#{Rails.root}/public/stroke_to_places.json", "w") do |file|
+  # 	  file.puts places.to_json
+  # 	end
+  # end
 end

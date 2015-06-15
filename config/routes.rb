@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'search' => 'names#search'
   root 'names#index'
+  get 'names/updatePlaces'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
