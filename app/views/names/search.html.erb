@@ -14,11 +14,15 @@
 
 <h3>跟你的姓名筆劃數一樣的地方</h3>
 <table>
-	<% @places.each do |place| %>
-		<tr>
-			<td><b><%= place['place']%></b></td>
-			<td><%= place['county']%><%= place['town']%></td>
-		</tr>
+	<% if @places != nil%>
+		<% @places.each do |place| %>
+			<tr>
+				<td><b><%= place['place']%></b></td>
+				<td><%= place['county']%><%= place['town']%></td>
+			</tr>
+		<% end %>
+	<% else %>
+		沒有符合的噎Q
 	<% end %>
 </table>
 <br>

@@ -62,7 +62,11 @@ class NamesController < ApplicationController
   def strokeToPlaces(stroke_sum)
 		stroke_to_places = JSON.parse(File.read("#{Rails.root}/public/stroke_to_places.json"))
   	
-  	return stroke_to_places[stroke_sum.to_s]
+  	if stroke_to_places[stroke_sum.to_s]
+  		return stroke_to_places[stroke_sum.to_s]
+  	else
+  		return nil
+  	end
   end
 
   # def updatePlaces
