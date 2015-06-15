@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'names/index'
-
-  get 'names/search'
+  get 'search' => 'names#search'
+  root 'names#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

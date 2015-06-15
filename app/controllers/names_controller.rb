@@ -13,10 +13,12 @@ class NamesController < ApplicationController
   	stroke_array = cnsToStroke(big5ToCns(name))
   	
   	@characters = Array.new
+  	@stroke_sum = 0
   	num = stroke_array.length
   	for i in 0...num
   		character = { 'chinese' => name[i], 'stroke' => stroke_array[i]}
   		@characters.push(character)
+  		@stroke_sum += stroke_array[i]
   	end
   end
 
@@ -29,7 +31,7 @@ class NamesController < ApplicationController
 
 		big_5_to_cns = JSON.parse(File.read("#{Rails.root}/public/big_5_to_cns.json"))
   	big5_pre = Iconv.conv("Big5", "utf-8", name).bytes.to_a
-  	big5_length = big5.length / 2
+  	big5_length = big5_pre.length / 2
   	big5 = Array.new
 
   	for i in 0...big5_length

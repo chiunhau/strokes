@@ -1,2 +1,14 @@
-<h1>Names#search</h1>
-<p>Find me in app/views/names/search.html.erb</p>
+<h1>筆劃查詢結果</h1>
+
+
+<% @characters.each do |character| %>
+	<%= character['chinese'] %>：<%= character['stroke'] %>劃
+	<br/>
+	<br/>
+<% end %>
+
+總筆劃：<%= @stroke_sum %>劃
+<br/>
+<br/>
+<br/>	
+<%= link_to '返回', root_path %>

@@ -1,2 +1,6 @@
-<h1>Names#index</h1>
-<p>Find me in app/views/names/index.html.erb</p>
+<h2>一個快速查詢中文字詞筆劃的概念^^</h2>
+<%= form_tag("/search", method: "get") do %>
+  <%= label_tag(:str, "輸入中文字串:") %>
+  <%= text_field_tag(:str) %>
+  <%= submit_tag("Search") %>
+<% end %>
