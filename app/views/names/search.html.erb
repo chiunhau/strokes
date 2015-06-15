@@ -1,32 +1,49 @@
-<h1>筆劃查詢結果</h1>
+<div class="row" style="text-align:center">
+	<h2>正在苦惱暑假要去哪玩嗎？</h2>
+	<p style="margin-bottom: 3em">找一個跟自己姓名的筆畫數一樣的地方，一個人去冒險吧！</p>
+	
+	<div class="col-md-6 col-md-offset-3" style="text-align:center">
+	 	<% @characters.each do |character| %>
+			<%= character['chinese'] %>：<%= character['stroke'] %>劃<br>
+		<% end %>
+		總計：<%= @stroke_sum %>劃
+		<br>
+		<br>
+		<%= link_to '返回', root_path %>
+	</div>
+
+</div>
+
+<div class="row" style="text-align:center;margin-top:3em">
+	<div class="col-md-6 col-md-offset-3">
+		<h3>跟你姓名筆劃數一樣的地方</h3>
+		<table class="table">
+			<% if @places != nil%>
+				<% @places.each do |place| %>
+					<tr>
+						<td><b><%= place['place']%></b></td>
+						<td><%= place['county']%><%= place['town']%></td>
+					</tr>
+				<% end %>
+			<% else %>
+				沒有符合的噎Q
+			<% end %>
+		</table>
+		<br>
+		<br>
+		<br>
+		<br>
+		<%= link_to '返回', root_path %>
+	</div>
+</div>
 
 
-<% @characters.each do |character| %>
-	<%= character['chinese'] %>：<%= character['stroke'] %>劃
-	<br/>
-	<br/>
-<% end %>
 
-總筆劃：<%= @stroke_sum %>劃
+
+
+
+
 <br/>
 <br/>
 <br/>	
 
-<h3>跟你的姓名筆劃數一樣的地方</h3>
-<table>
-	<% if @places != nil%>
-		<% @places.each do |place| %>
-			<tr>
-				<td><b><%= place['place']%></b></td>
-				<td><%= place['county']%><%= place['town']%></td>
-			</tr>
-		<% end %>
-	<% else %>
-		沒有符合的噎Q
-	<% end %>
-</table>
-<br>
-<br>
-<br>
-<br>
-<%= link_to '返回', root_path %>

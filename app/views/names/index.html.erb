@@ -1,6 +1,15 @@
-<h2>一個快速查詢中文字詞筆劃的概念^^</h2>
-<%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:str, "輸入中文字串:") %>
-  <%= text_field_tag(:str) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<div class="row" style="text-align:center">
+	<h2>正在苦惱暑假要去哪玩嗎？</h2>
+	<p style="margin-bottom: 3em">找一個跟自己姓名的筆畫數一樣的地方，一個人去冒險吧！</p>
+
+	<div class="col-md-6 col-md-offset-3">
+	  <%= form_tag("/search", method: "get", class:"") do %>
+		<div class="input-group">
+			<%= text_field_tag :str, params[:str], class: " form-control", placeholder: "輸入中文姓名即可開始" %>
+			<span class="input-group-btn">
+		  	<%= submit_tag "搜尋", :class => "btn btn-primary"%>
+		  </span>
+		</div>	
+		<% end %>
+	</div>	
+</div>

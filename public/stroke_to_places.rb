@@ -2,6 +2,7 @@ require 'iconv'
 require 'csv'
 require 'json'
 
+
 def stringFilter(str)
 	name = str.gsub(/[^\u4E00-\u9fa5]/, '')
 	return name
