@@ -5,12 +5,30 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>尋找你的地名</title>
+  <meta name="og:description" content="正在苦惱暑假要去哪玩嗎？找一個跟自己姓名的筆畫數一樣的地方，一個人去冒險吧！" />
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='//fonts.googleapis.com/css?family=Alegreya:400' rel='stylesheet' type='text/css'><script src="//s3-ap-northeast-1.amazonaws.com/justfont-user-script/jf-33707.js"></script>
 </head>
 <body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1716807941918788',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/zh_TW/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 	<div class="container sourcehansans-tc-normal">
 		<%= yield %>
 	</div>
